@@ -1,11 +1,22 @@
 from django.shortcuts import render
-
+from website.forms import contactForm
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'website/index.html')
 
 def contact(request):
-    return render(request,'website/contact.html')
+    if request.method == 'POST':
+        form = contactForm(request.POST)
+        if form.is_valid():
+            comit=form.save(commit= False)
+            comit.name = 'unknown'
+            comit.save()
+            messages.success(request,'success message')
+        else:
+            messages.error(request,'Error contact')
+    
+    form = contactForm()
+    context = {'form': form}    
+    return render(request,'website/contact.html',context)
 
-def listblog(request):
-    return render(request,'website/listblog.html')
