@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load blog-tag %}
+{% load humanizelib %}
     {% block content %}
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
                 <div class="container">
@@ -42,8 +43,8 @@
                                         <p class="excert">{{p.content|short}}</p>
                                         <a href="{% url 'blog:blog_single' p.id %}" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                                     </div>
-                        
-                                    <span class="badge bg-design rounded-pill ms-auto">Views: {{ p.content_view }}</span>
+                                    <span class="badge bg-design rounded-pill ms-auto"> view : {{ p.cuntent_view }}</span>
+                                    <span class="badge bg-design rounded-pill ms-auto">date : {{ p.publish_date|naturaltime }}</span>
                                 </div>
                             </div>
                         </div>
