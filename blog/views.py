@@ -32,4 +32,11 @@ def blog_home(request):
     return render(request,'blog/blog_home.html',context)
 
 def search(request):
-    return render(request,'blog/blog-search.html')
+    now = timezone.now()
+    if request.method == 'GET':
+        posts= post.objects.filter(status=1,publish_date__lte=now)
+        if s:=request.GET.get('search'):
+            posts=posts.filter(content__contains=s) or posts.filter(titel__contains=s)
+
+    context = {'post':posts}
+    return render(request,'blog/blog_home.html',context)
