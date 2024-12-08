@@ -29,7 +29,7 @@ def blog_single(request,id):
 def blog_home(request):
     now = timezone.now()
     posts = post.objects.filter(status=1,publish_date__lte=now)
-    paginators = Paginator(posts,2)
+    paginators = Paginator(posts,3)
     page_number = request.GET.get('page')
     try:
         posts = paginators.get_page(page_number)
