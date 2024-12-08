@@ -4,6 +4,7 @@ from django.utils import timezone
 from blog.forms import commentforms
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from django.core.paginator import Paginator ,EmptyPage ,PageNotAnInteger
 # Create your views here.
 def blog_single(request,id):
     if request.method =='POST':
@@ -28,6 +29,14 @@ def blog_single(request,id):
 def blog_home(request):
     now = timezone.now()
     posts = post.objects.filter(status=1,publish_date__lte=now)
+    paginators = Paginator(posts,2)
+    page_number = request.GET.get('page')
+    try:
+        posts = paginators.get_page(page_number)
+    except EmptyPage:
+        posts = paginators.get_page(1)
+    except PageNotAnInteger:
+        posts = paginators.get_page(1)
     context = {'post': posts}
     return render(request,'blog/blog_home.html',context)
 
