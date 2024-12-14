@@ -1,6 +1,13 @@
 
 <div class="comment-form">
     <h4>Comments</h4>
+    <style>
+      .comment-count {
+        color: black; 
+        }
+    </style>
+
+    <p class="comment-count">🧾{{comment.count}}</p>
     <form  method="POST" action="{% url 'blog:blog_single' id=posts.id %}">
         {% csrf_token %}
         <input name="post" type="hidden" value={{posts.id}}>
