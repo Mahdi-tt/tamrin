@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'django_summernote',
     'django_humanize',
+    'accounts.apps.AccountsConfig',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    
 ]
 
 MIDDLEWARE = [
