@@ -47,6 +47,9 @@
                 <strong><i class="fas fa-calendar-alt"></i></strong>
                 <li>date : {{ posts.publish_date|naturaltime }}</li>
                 <li>view : {{ posts.cuntent_view }}</li>
+                {% for cat in posts.categore.all %}
+                <a href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}} </a>
+                {% endfor %}
             </div>
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
@@ -65,8 +68,8 @@
                 <div class="container">
                     {% include 'blog/blog-comment.html' %}
                     
+                    {% include 'blog/blog-show-comment.html' %}
                 </div>
-                {% include 'blog/blog-show-comment.html' %}
             </section>
         </main>
 {% endblock %}

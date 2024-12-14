@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from website.forms import contactForm
 from django.contrib import messages
+from blog.models import post
+from django.utils import timezone
 # Create your views here.
 def index(request):
     return render(request,'website/index.html')
