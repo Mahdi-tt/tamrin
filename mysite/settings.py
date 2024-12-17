@@ -29,6 +29,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#capcha
+# https://pylessons.com/django-recaptcha
+
+RECAPTCHA_PUBLIC_KEY = '6Lcp9ZsqAAAAALjIpdP2F4Q2nfLBdFxOXb3vXw7R'
+RECAPTCHA_PRIVATE_KEY = '6Lcp9ZsqAAAAANPakRQQjU7wqo2n4hAiNLTrRQhT' 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,8 +49,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'django_humanize',
     'accounts.apps.AccountsConfig',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django_recaptcha',
     
 ]
 
