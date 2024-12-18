@@ -30,14 +30,18 @@ ALLOWED_HOSTS = []
 
 
 #capcha
-# https://pylessons.com/django-recaptcha
 
+# https://pylessons.com/django-recaptcha
 RECAPTCHA_PUBLIC_KEY = '6Lcp9ZsqAAAAALjIpdP2F4Q2nfLBdFxOXb3vXw7R'
 RECAPTCHA_PRIVATE_KEY = '6Lcp9ZsqAAAAANPakRQQjU7wqo2n4hAiNLTrRQhT' 
-
+ 
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'recaptcha'
+}
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'django_humanize',
     'accounts.apps.AccountsConfig',
+    'captcha', 
     'django_recaptcha',
     
 ]
@@ -61,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'mysite.urls'
