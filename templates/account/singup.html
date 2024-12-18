@@ -27,37 +27,39 @@
 						<div class="img" style="background-image: url({% static 'images1/bg-1.jpg'%});"></div>
 						<div class="login-wrap p-4 p-md-5">
 
-							<form action="#" class="signin-form">
-			      		<div class="form-group mt-3">
-			      			<input type="text" class="form-control" required>
-			      			<label class="form-control-placeholder" for="username">Username</label>
-			      		</div>
-		            <div class="form-group">
-		              <input name="password1" type="password" class="form-control" required>
-		              <label class="form-control-placeholder" for="password">Password</label>
-		              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-		            </div>
-                    <div class="form-group">
-                        <input name="password2" type="password" class="form-control" required>
-                        <label class="form-control-placeholder" for="password">comform Password</label>
-                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                      </div>
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
-		            </div>
-		            <div class="form-group d-md-flex">
-		            	<div class="w-50 text-left">
-			            	<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-									  <input type="checkbox" checked>
-									  <span class="checkmark"></span>
-										</label>
-									</div>
-                                    <div class="w-50 text-md-right">
-										<a href="{% url 'account:login' %}">login</a>
-									</div>
+						<form action="{% url 'account:singup' %}" method="POST" class="signin-form">
+							{% csrf_token %}
+								{{form.as_p}}
+								<div class="form-group mt-3">
+									<input type="text" class="form-control" required>
+									<label class="form-control-placeholder" for="username">Username</label>
+								</div>
+							<div class="form-group">
+							<input name="password1" type="password" class="form-control" required>
+							<label class="form-control-placeholder" for="password">Password</label>
+							<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<input name="password2" type="password" class="form-control" required>
+								<label class="form-control-placeholder" for="password">comform Password</label>
+								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+							</div>
+							<div class="form-group d-md-flex">
+								<div class="w-50 text-left">
+									<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+											<input type="checkbox" checked>
+											<span class="checkmark"></span>
+												</label>
+											</div>
+											<div class="w-50 text-md-right">
+												<a href="{% url 'account:login' %}">login</a>
+											</div>
 
-		            </div>
-		          </form>
+							</div>
+		          		</form>
 
 		        </div>
 		      </div>
