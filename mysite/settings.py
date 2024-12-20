@@ -40,6 +40,23 @@ MULTI_CAPTCHA_ADMIN = {
 }
 # Application definition
 
+#authentication
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_USE_TLS = True
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = "blogofficiall9@gmail.com"
+
+EMAIL_HOST_PASSWORD = "kkvs jzgr alve lixm"
+
+#sites
+SITE_ID = 2
+DOMAIN = '127.0.0.1'
+
 INSTALLED_APPS = [
     # 'multi_captcha_admin',
     'django.contrib.admin',
@@ -55,6 +72,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'captcha', 
     'django_recaptcha',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     
 ]
 

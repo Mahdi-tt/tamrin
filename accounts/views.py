@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
+from .forms import customUserCreationForm
 # Create your views here.
 def login_user(request):
     if not request.user.is_authenticated:
@@ -35,11 +35,18 @@ def login_user(request):
 
 def singup(request):
     if not request.user.is_authenticated:
-        form =  UserCreationForm(request.POST)
-        # if request.method == 'POST' :
-            # username = request.POST.get('username')
-            # password1 = request.POST.get('password')
-            # password2 = request.POST.get('password')
+        if request.method == 'POST' :
+            form =  customUserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request,'signup successful')
+                return redirect('/account/login/')
+            else:
+                messages.error(request,form.errors.as_text())
+    else:
+        messages.error(request,'you are login ')
+        return redirect('/')
+    form =  customUserCreationForm
     context = {'form':form}
     return render(request,'account/singup.html',context)
 

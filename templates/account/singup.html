@@ -11,9 +11,9 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel="stylesheet" href="{% static 'css1/style.css'%}">
-
-	</head>
-	<body>
+	
+</head>
+<body>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -24,24 +24,42 @@
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<div class="wrap">
+						<!-- # popup notification start -->
+						{% if messages %}
+							{% for message in messages %}
+								{% if message.tags == 'success' %}
+								<div class="alert alert-dismissible alert-success">
+								{% else %}
+								<div class="alert alert-dismissible alert-danger">
+								{%endif%}
+									<!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+									<strong>{{ message }}</strong>
+								</div>
+							{% endfor %}
+						{% endif %}
+						<!-- # popup notification end -->
 						<div class="img" style="background-image: url({% static 'images1/bg-1.jpg'%});"></div>
 						<div class="login-wrap p-4 p-md-5">
 
 						<form action="{% url 'account:singup' %}" method="POST" class="signin-form">
 							{% csrf_token %}
-								{{form.as_p}}
 								<div class="form-group mt-3">
-									<input type="text" class="form-control" required>
+									<input name="username"  type="text" class="form-control" required>
 									<label class="form-control-placeholder" for="username">Username</label>
 								</div>
+								<div class="form-group mt-3">
+									<input name="email"  type="email" class="form-control" required>
+									<label class="form-control-placeholder" for="email">Email</label>
+								</div>
+
 							<div class="form-group">
 							<input name="password1" type="password" class="form-control" required>
-							<label class="form-control-placeholder" for="password">Password</label>
+							<label class="form-control-placeholder" for="password1">Password</label>
 							<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">
 								<input name="password2" type="password" class="form-control" required>
-								<label class="form-control-placeholder" for="password">comform Password</label>
+								<label class="form-control-placeholder" for="password2">comform Password</label>
 								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">

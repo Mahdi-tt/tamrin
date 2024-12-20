@@ -18,6 +18,16 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import blogSitemaps
+from website.sitemaps import websitesitemaps
+
+
+sitemaps = {
+    "static": websitesitemaps,
+    "blog" : blogSitemaps
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +36,13 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('account/', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
+    path('account/', include("django.contrib.auth.urls")),
+    path(
+    "sitemap.xml",
+    sitemap,
+    {"sitemaps": sitemaps},
+    name="django.contrib.sitemaps.views.sitemap",
+)
 ]
 
 
