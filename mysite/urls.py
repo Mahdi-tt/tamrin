@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import blogSitemaps
 from website.sitemaps import websitesitemaps
+from debug_toolbar.toolbar import debug_toolbar_urls
+from django.views.generic import TemplateView
 
 
 sitemaps = {
@@ -37,13 +39,10 @@ urlpatterns = [
     path('account/', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
     path('account/', include("django.contrib.auth.urls")),
-    path(
-    "sitemap.xml",
-    sitemap,
-    {"sitemaps": sitemaps},
-    name="django.contrib.sitemaps.views.sitemap",
-)
-]
+    path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap"),
+    path('robots.txt', include('robots.urls')),
+
+]+ debug_toolbar_urls()
 
 
 

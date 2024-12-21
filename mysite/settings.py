@@ -57,6 +57,25 @@ EMAIL_HOST_PASSWORD = "kkvs jzgr alve lixm"
 SITE_ID = 2
 DOMAIN = '127.0.0.1'
 
+# debug_toolbar
+INTERNAL_IPS = [
+    "127.0.0.1",
+
+]
+  
+#robots
+ROBOTS_USE_SITEMAP = True
+ROBOTS_USE_HOST = False
+
+#compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+
 INSTALLED_APPS = [
     # 'multi_captcha_admin',
     'django.contrib.admin',
@@ -74,6 +93,9 @@ INSTALLED_APPS = [
     'django_recaptcha',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    "debug_toolbar",
+    'robots',
+    'compressor',
     
 ]
 
@@ -85,6 +107,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     
 ]
 
