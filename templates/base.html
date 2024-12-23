@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,12 +16,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-                        
+        {% compress css %}               
         <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
 
         <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
 
-        <link href="{% static 'css/templatemo-topic-listing.css'%}" rel="stylesheet">      
+        <link href="{% static 'css/templatemo-topic-listing.css'%}" rel="stylesheet">     
+        {% endcompress %} 
 <!--
 
 TemplateMo 590 topic listing
@@ -163,11 +165,13 @@ https://templatemo.com/tm-590-topic-listing
 </footer>
 
         <!-- JAVASCRIPT FILES -->
+        {% compress js %}
         <script src="{% static 'js/jquery.min.js'%}"></script>
         <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
         <script src="{% static 'js/jquery.sticky.js'%}"></script>
         <script src="{% static 'js/click-scroll.js'%}"></script>
         <script src="{% static 'js/custom.js'%}"></script>
+        {% endcompress %}
 
     </body>
 </html>
