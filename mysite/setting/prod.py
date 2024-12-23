@@ -5,11 +5,20 @@ from mysite.settings import *
 SECRET_KEY = 'django-insecure-%0z$4!^er4as49f(+f%qdh(^c&!+$ddob9$6#_f5cq%pv%4)@l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
 
 ALLOWED_HOSTS = []
 
+#page 404
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
+
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ["*"]
 
 
 #capcha
@@ -22,11 +31,22 @@ RECAPTCHA_PRIVATE_KEY = '6Lcp9ZsqAAAAANPakRQQjU7wqo2n4hAiNLTrRQhT'
 SITE_ID = 2
 
 
+
+
+
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': str(BASE_DIR / 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'NAME': 'postgresdb',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '5432',  
+    },
 }
 
 STATICFILES_DIRS = [

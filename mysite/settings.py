@@ -21,8 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 
-''' page error 404'''
-#https://stackoverflow.com/questions/20581017/django-custom-404-page-not-working/44127265
 
 
 # Application definition

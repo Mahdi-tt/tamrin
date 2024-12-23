@@ -5,6 +5,7 @@ from blog.forms import commentforms
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator ,EmptyPage ,PageNotAnInteger
+from django.shortcuts import redirect
 # Create your views here.
 def blog_single(request,id):
     if request.method =='POST':
@@ -52,3 +53,7 @@ def search(request):
 
     context = {'post':posts}
     return render(request,'blog/blog_home.html',context)
+
+def page_not_found(request, exception):
+    return render(request,'404.html',status=404)
+        
