@@ -12,13 +12,14 @@ ALLOWED_HOSTS = []
 #page 404
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
+DEBUG = True
+# DEBUG = False
+# TEMPLATE_DEBUG = DEBUG
+# ALLOWED_HOSTS = ["*"]
 
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["*"]
 
 
 #capcha
