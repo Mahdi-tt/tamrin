@@ -51,12 +51,12 @@ COMPRESS_OFFLINE = True
 
 
 MULTI_CAPTCHA_ADMIN = {
-    'engine': 'recaptcha'
+    'engine': 'simple-captcha',
 }
 
 
 INSTALLED_APPS = [
-    # 'multi_captcha_admin',
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'robots',
     'compressor',
+
     
 ]
 
@@ -158,11 +159,11 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+
+
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
